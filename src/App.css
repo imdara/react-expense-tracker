@@ -91,7 +91,7 @@ select:focus {
 
 button {
   border: 0.12rem solid rgb(158, 125, 81);
-  border-radius: 0.7rem;
+  border-radius: 0.5rem;
   color: rgb(158, 125, 81);
   background-color: blanchedalmond;
   padding: 0.4rem;
@@ -103,4 +103,10 @@ button:hover {
   color: brown;
   border: 0.12rem solid brown;
   cursor: pointer;
+}
+
+#deleteBtn {
+  border-radius: 0.3rem;
+  margin: 0.5rem 0px;
+  padding: 0.2rem;
 }

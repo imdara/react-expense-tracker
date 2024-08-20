@@ -14,8 +14,14 @@ const Form = ({ entry, addEntry, handleChange }) => {
       </div>
       <div className="formSection">
         <label htmlFor="typeInp">Select type: </label>
-        <select onChange={handleChange} name="type" id="typeInp" required>
-          <option value=""> --Select Type-- </option>
+        <select
+          onChange={handleChange}
+          name="type"
+          id="typeInp"
+          value={entry.type}
+          required
+        >
+          <option value="">--Select Type--</option>
           <option value="Expense">Expense</option>
           <option value="Income">Income</option>
         </select>
