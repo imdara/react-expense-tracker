@@ -1,4 +1,4 @@
-const Form = ({ expense, addExpense, handleChange }) => {
+const Form = ({ expense, addExpense, handleChange, categories }) => {
   return (
     <form onSubmit={(e) => addExpense(e)}>
       <div className="formSection">
@@ -11,11 +11,11 @@ const Form = ({ expense, addExpense, handleChange }) => {
           required
         >
           <option value="">--Select Category--</option>
-          <option value="Rent">Rent</option>
-          <option value="Groceries">Groceries</option>
-          <option value="Internet">Internet</option>
-          <option value="Electricity">Electricity</option>
-          <option value="Other">Other</option>
+          {categories.map((category, i) => (
+            <option key={i + 1} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </div>
       <div className="formSection">

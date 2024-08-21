@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import Expenses from "./components/Expenses";
 import Form from "./components/Form";
+import CategoryForm from "./components/CategoryForm";
 import "./App.css";
 
 const App = () => {
   const [totalExpense, setTotalExpense] = useState(0);
+  const [categories, setCategories] = useState(() => {
+    let localCategories = localStorage.getItem("CATEGORIES");
+    return localCategories?.length
+      ? JSON.parse(localCategories)
+      : ["Rent", "Groceries", "Internet", "Electricity"];
+  });
   const [expenses, setExpenses] = useState(() => {
     let localItems = localStorage.getItem("ITEMS");
     return localItems ? JSON.parse(localItems) : [];
@@ -56,7 +63,9 @@ const App = () => {
             expense={expense}
             addExpense={addExpense}
             handleChange={handleChange}
+            categories={categories}
           />
+          <CategoryForm categories={categories} setCategories={setCategories} />
         </div>
       </div>
     </>
