@@ -74,6 +74,13 @@ form {
   align-items: center;
 }
 
+.filterSortSection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .formSection {
   margin: 10px;
 }

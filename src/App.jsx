@@ -57,6 +57,7 @@ const App = () => {
           setExpenses={setExpenses}
           setTotalExpense={setTotalExpense}
           totalExpense={totalExpense}
+          categories={categories}
         />
         <div>
           <Form
