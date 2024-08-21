@@ -1,50 +1,63 @@
 import { useState, useEffect } from "react";
-import Entries from "./components/Entries";
+import Expenses from "./components/Expenses";
 import Form from "./components/Form";
 import "./App.css";
 
 const App = () => {
-  const [balance, setBalance] = useState(() => {
-    let localBal = localStorage.getItem("BALANCE");
-    return localBal ? localBal : 0;
-  });
-  const [entries, setEntries] = useState(() => {
+  const [totalExpense, setTotalExpense] = useState(0);
+  const [expenses, setExpenses] = useState(() => {
     let localItems = localStorage.getItem("ITEMS");
     return localItems ? JSON.parse(localItems) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("BALANCE", balance);
-    localStorage.setItem("ITEMS", JSON.stringify(entries));
-  }, [entries]);
-  const [entry, setEntry] = useState({});
+    expenses.length
+      ? setTotalExpense(
+          expenses.map((item) => item.amount).reduce((a, b) => a + +b, 0)
+        )
+      : setTotalExpense(0);
+    localStorage.setItem("ITEMS", JSON.stringify(expenses));
+  }, [expenses]);
+
+  const [expense, setExpense] = useState({});
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEntry({ ...entry, [name]: value });
+    setExpense({ ...expense, [name]: value });
   };
 
-  const addEntry = (e) => {
+  const addExpense = (e) => {
     e.preventDefault();
-    if (!isNaN(entry.amount) && entry.amount > 0) {
-      setEntries([...entries, entry]);
-      if (entry.type === "Expense") setBalance((bal) => bal - +entry.amount);
-      if (entry.type === "Income") setBalance((bal) => bal + +entry.amount);
-      setEntry({ srNo: entries.length + 1, name: "", type: "", amount: "" });
+    console.log(expense);
+    if (!isNaN(expense.amount) && expense.amount > 0) {
+      setExpenses([...expenses, expense]);
+      // setTotalExpense((tot) => tot + +expense.amount);
+      setExpense({
+        srNo: expenses.length + 1,
+        category: "",
+        amount: "",
+        date: "",
+        description: "",
+      });
     } else alert("Please enter a valid amount");
   };
 
   return (
     <>
       <div className="main">
-        <div className="balance">Balance: {balance}</div>
-        <Entries
-          entries={entries}
-          setEntries={setEntries}
-          setBalance={setBalance}
-          balance={balance}
+        <div className="totalExpense">Total Expense: {totalExpense}</div>
+        <Expenses
+          expenses={expenses}
+          setExpenses={setExpenses}
+          setTotalExpense={setTotalExpense}
+          totalExpense={totalExpense}
         />
         <div>
-          <Form entry={entry} addEntry={addEntry} handleChange={handleChange} />
+          <Form
+            expense={expense}
+            addExpense={addExpense}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </>

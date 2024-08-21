@@ -18,7 +18,11 @@ html {
   margin: auto;
 }
 
-.balance {
+h2 {
+  text-align: center;
+}
+
+.totalExpense {
   margin: 10px;
   background-color: darksalmon;
   border: 2px solid blanchedalmond;
@@ -30,11 +34,12 @@ html {
   color: cornsilk;
 }
 
-.entry {
+.expense {
   margin-top: 6px;
   border: 2px solid chocolate;
   padding: 8px;
-  width: 10rem;
+  width: 15rem;
+  max-height: 14rem;
   border-radius: 6px;
 }
 
@@ -49,7 +54,7 @@ form {
   color: chocolate;
 }
 
-.entries {
+.expenses {
   max-height: 20rem;
   overflow: auto;
   margin: 10px;
@@ -60,6 +65,13 @@ form {
   font-weight: 500;
   font-size: medium;
   color: chocolate;
+}
+
+.expenseList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .formSection {

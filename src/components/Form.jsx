@@ -1,36 +1,28 @@
-const Form = ({ entry, addEntry, handleChange }) => {
+const Form = ({ expense, addExpense, handleChange }) => {
   return (
-    <form onSubmit={(e) => addEntry(e)}>
+    <form onSubmit={(e) => addExpense(e)}>
       <div className="formSection">
-        <label htmlFor="typeInp">Name: </label>
-        <input
-          onChange={handleChange}
-          value={entry.name}
-          type="text"
-          name="name"
-          id="name"
-          required
-        />
-      </div>
-      <div className="formSection">
-        <label htmlFor="typeInp">Select type: </label>
+        <label htmlFor="categoryInp">Select Category: </label>
         <select
           onChange={handleChange}
-          name="type"
-          id="typeInp"
-          value={entry.type}
+          name="category"
+          id="categoryInp"
+          value={expense.category}
           required
         >
-          <option value="">--Select Type--</option>
-          <option value="Expense">Expense</option>
-          <option value="Income">Income</option>
+          <option value="">--Select Category--</option>
+          <option value="Rent">Rent</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Internet">Internet</option>
+          <option value="Electricity">Electricity</option>
+          <option value="Other">Other</option>
         </select>
       </div>
       <div className="formSection">
         <label htmlFor="amountInp">Amount: </label>
         <input
           onChange={handleChange}
-          value={entry.amount}
+          value={expense.amount}
           type="number"
           name="amount"
           id="amountInp"
@@ -38,7 +30,30 @@ const Form = ({ entry, addEntry, handleChange }) => {
           required
         />
       </div>
-      <button type="submit">Add Entry</button>
+      <div className="formSection">
+        <label htmlFor="dateInp">Date: </label>
+        <input
+          onChange={handleChange}
+          value={expense.date}
+          type="date"
+          name="date"
+          id="dateInp"
+          required
+        />
+      </div>
+      <div className="formSection">
+        <label htmlFor="descInp">Description: </label>
+        <input
+          onChange={handleChange}
+          value={expense.description}
+          type="text"
+          name="description"
+          id="descInp"
+          placeholder="Enter description"
+          required
+        />
+      </div>
+      <button type="submit">Add Expense</button>
     </form>
   );
 };
