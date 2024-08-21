@@ -11,7 +11,7 @@ const Expense = ({ expense, expenses, setExpenses }) => {
         <b>Category:</b> {expense.category}
       </div>
       <div>
-        <b>Amount:</b> {expense.amount}
+        <b>Amount:</b> ₹{expense.amount}
       </div>
       <div>
         <b>Date:</b> {expense.date}

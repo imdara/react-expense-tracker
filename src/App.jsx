@@ -31,7 +31,6 @@ const App = () => {
     console.log(expense);
     if (!isNaN(expense.amount) && expense.amount > 0) {
       setExpenses([...expenses, expense]);
-      // setTotalExpense((tot) => tot + +expense.amount);
       setExpense({
         srNo: expenses.length + 1,
         category: "",
@@ -45,7 +44,7 @@ const App = () => {
   return (
     <>
       <div className="main">
-        <div className="totalExpense">Total Expense: {totalExpense}</div>
+        <div className="totalExpense">Total Expense: ₹{totalExpense}</div>
         <Expenses
           expenses={expenses}
           setExpenses={setExpenses}
